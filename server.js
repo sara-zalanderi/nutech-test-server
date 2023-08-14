@@ -10,6 +10,8 @@ server.use((req, res, next) => {
   if (req.method === "POST") {
     req.body.createdAt = Date.now();
   }
+  res.header("Access-Control-Allow-Origin", "http://localhost:3001");
+  res.header("Access-Control-Allow-Headers", "*");
   next();
 });
 server.use(router);
