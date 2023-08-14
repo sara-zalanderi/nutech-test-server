@@ -3,7 +3,7 @@ const cors = require("cors");
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 server.use(middlewares);
 server.use(router);
@@ -18,4 +18,4 @@ server.use(
 );
 server.options("*", cors());
 
-server.listen(port);
+server.listen(port, "0.0.0.0");
