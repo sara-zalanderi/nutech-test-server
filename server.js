@@ -3,18 +3,8 @@ const cors = require("cors");
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
-const port = process.env.PORT || 3001;
+const port = 3001;
 // const allow = ["http://localhost:3000"];
-
-server.use(
-  cors({
-    origin: true,
-    credentials: true,
-    preflightContinue: false,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  })
-);
-server.options("*", cors());
 
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
@@ -27,5 +17,15 @@ server.use((req, res, next) => {
   next();
 });
 server.use(router);
+
+server.use(
+  cors({
+    origin: true,
+    credentials: true,
+    preflightContinue: false,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  })
+);
+server.options("*", cors());
 
 server.listen(port);
