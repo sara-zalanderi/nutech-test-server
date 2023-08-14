@@ -12,8 +12,8 @@ server.use((req, res, next) => {
   if (req.method === "POST") {
     req.body.createdAt = Date.now();
   }
-  res.header("Access-Control-Allow-Origin", allow);
-  res.header("Access-Control-Allow-Headers", "*");
+  //   res.header("Access-Control-Allow-Origin", allow);
+  //   res.header("Access-Control-Allow-Headers", "*");
   next();
 });
 var corsOptions = {
